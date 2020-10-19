@@ -8,6 +8,16 @@ const { mongoose } = require("./db/mongoose");
 // Declare the Middleware
 app.use(bodyParser.json());
 
+// For CORS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+
 // Routing the API
 // For Lists
 app.get("/lists", (req, res) => {
